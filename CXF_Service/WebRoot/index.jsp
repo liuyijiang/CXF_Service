@@ -22,5 +22,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     This is my JSP page. <br>
+    
+    <form action="http://localhost:8080/CXF_Service/rest/karakalService/karakal/testFormParam" method="post" enctype="multipart/form-data">
+       <input type="file" name="image" />
+       <input type="text" name="name"/>
+       <input type="submit">
+    </form>
+    
   </body>
 </html>
