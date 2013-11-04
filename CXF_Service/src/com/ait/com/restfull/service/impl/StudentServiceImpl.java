@@ -17,7 +17,7 @@ public class StudentServiceImpl implements IStudentService {
 		StudentDto s1 = new StudentDto();
 		s1.setId(1l);
 		s1.setName("leiwuluan");
-		s1.setAddress("±±¾©ÊĞ¶«³ÇÇø");
+		s1.setAddress("æˆéƒ½å¤§å­¦");
 		s1.setAge(22);
 		s1.setScroe(100l);
 		students.add(s1);
@@ -25,7 +25,7 @@ public class StudentServiceImpl implements IStudentService {
 		s1 = new StudentDto();
 		s1.setId(1l);
 		s1.setName("leiwuluan");
-		s1.setAddress("±±¾©ÊĞ¶«³ÇÇø");
+		s1.setAddress("æˆéƒ½å¤§å­¦æˆ‘");
 		s1.setAge(22);
 		s1.setScroe(100l);
 		students.add(s1);
@@ -33,7 +33,7 @@ public class StudentServiceImpl implements IStudentService {
 		s1 = new StudentDto();
 		s1.setId(1l);
 		s1.setName("leiwuluan");
-		s1.setAddress("±±¾©ÊĞ¶«³ÇÇø");
+		s1.setAddress("æˆéƒ½å¤§å­¦3");
 		s1.setAge(22);
 		s1.setScroe(100l);
 		students.add(s1);
@@ -41,7 +41,7 @@ public class StudentServiceImpl implements IStudentService {
 		s1 = new StudentDto();
 		s1.setId(1l);
 		s1.setName("leiwuluan");
-		s1.setAddress("±±¾©ÊĞ¶«³ÇÇø");
+		s1.setAddress("æˆéƒ½å¤§å­¦4");
 		s1.setAge(22);
 		s1.setScroe(100l);
 		students.add(s1);
@@ -49,7 +49,7 @@ public class StudentServiceImpl implements IStudentService {
 		s1 = new StudentDto();
 		s1.setId(1l);
 		s1.setName("leiwuluan");
-		s1.setAddress("±±¾©ÊĞ¶«³ÇÇø");
+		s1.setAddress("æˆéƒ½å¤§å­¦5");
 		s1.setAge(22);
 		s1.setScroe(100l);
 		students.add(s1);
@@ -57,7 +57,7 @@ public class StudentServiceImpl implements IStudentService {
 		s1 = new StudentDto();
 		s1.setId(1l);
 		s1.setName("leiwuluan");
-		s1.setAddress("±±¾©ÊĞ¶«³ÇÇø");
+		s1.setAddress("æˆéƒ½å¤§å­¦6");
 		s1.setAge(22);
 		s1.setScroe(100l);
 		students.add(s1);
@@ -70,13 +70,14 @@ public class StudentServiceImpl implements IStudentService {
 	}
 
 	@Override
+	//@Produces("application/xml")
 	public ResultDto getStudentById(long id) {
 		ResultDto result = new ResultDto();
 		List<StudentDto> students = new ArrayList<StudentDto>();
 		StudentDto s1 = new StudentDto();
 		s1.setId(1l);
 		s1.setName("leiwuluan");
-		s1.setAddress("±±¾©ÊĞ¶«³ÇÇø");
+		s1.setAddress("æˆéƒ½å¤§å­¦1");
 		s1.setAge(22);
 		s1.setScroe(100l);
 		students.add(s1);
