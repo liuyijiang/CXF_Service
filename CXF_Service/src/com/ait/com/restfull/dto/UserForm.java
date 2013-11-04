@@ -1,11 +1,15 @@
 package com.ait.com.restfull.dto;
 
-import java.io.File;
+
+import javax.ws.rs.FormParam;
+
+import org.jboss.resteasy.annotations.providers.multipart.PartType;
 
 public class UserForm {
    
 	private String name;
-	private File image;
+	
+	private byte[] image;
 	
 	public String getName() {
 		return name;
@@ -13,13 +17,15 @@ public class UserForm {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public File getImage() {
+	public byte[] getImage() {
 		return image;
 	}
-	public void setImage(File image) {
+	
+	@FormParam("images")  
+	@PartType("application/octet-stream")  
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
-	
-	
+    	
 	
 }

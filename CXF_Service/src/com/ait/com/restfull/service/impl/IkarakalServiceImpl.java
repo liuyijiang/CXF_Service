@@ -1,14 +1,23 @@
 package com.ait.com.restfull.service.impl;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.MatrixParam;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
+import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
+
 import com.ait.com.restfull.dto.BaseVo;
+import com.ait.com.restfull.dto.UserForm;
 import com.ait.com.restfull.service.IkarakalService;
 
 public class IkarakalServiceImpl implements IkarakalService {
@@ -94,11 +103,38 @@ public class IkarakalServiceImpl implements IkarakalService {
 
 
 	@Override
-	public BaseVo testFormParam() {
-		// TODO Auto-generated method stub
-		return null;
+	@POST
+	@Path("/karakal/testFormParam")
+	@Consumes("multipart/form-data") 
+	@Produces("application/json;charset=utf-8")
+	public BaseVo testFormParam(@MultipartForm UserForm from) {
+		String fileName = "d:\\anything"; 
+		try {  
+            writeFile(from.getImage(), fileName);  
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        }  
+		BaseVo vo = new BaseVo();
+		vo.setCode("200");
+		vo.setMessage("successfull:");
+		return vo;
 	}
 	
+	private void writeFile(byte[] content, String filename) throws IOException {  
+		   
+        File file = new File(filename);  
+   
+        if (!file.exists()) {  
+            file.createNewFile();  
+        }  
+   
+        FileOutputStream fop = new FileOutputStream(file);  
+   
+        fop.write(content);  
+        fop.flush();  
+        fop.close();  
+   
+    }  
 	//@FormParam  @CookieParam @DefaultValue
 	
 	

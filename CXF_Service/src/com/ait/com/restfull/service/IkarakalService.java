@@ -5,7 +5,10 @@ import javax.ws.rs.MatrixParam;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
+import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
+
 import com.ait.com.restfull.dto.BaseVo;
+import com.ait.com.restfull.dto.UserForm;
 
 public interface IkarakalService {
   
@@ -16,5 +19,5 @@ public interface IkarakalService {
 	public BaseVo testQueryParm(@PathParam("id") String id,@QueryParam("name")String name,@QueryParam("color")String color);
 	public BaseVo testheaderParm(@PathParam("id") String id,@HeaderParam("Referer") String header);
 	
-	public BaseVo testFormParam();
+	public BaseVo testFormParam(@MultipartForm UserForm from);
 }
