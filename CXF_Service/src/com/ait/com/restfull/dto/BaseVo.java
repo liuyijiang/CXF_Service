@@ -1,8 +1,11 @@
 package com.ait.com.restfull.dto;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "basevo")
+@XmlAccessorType(XmlAccessType.FIELD) 
 public class BaseVo {
  
 	private String code;

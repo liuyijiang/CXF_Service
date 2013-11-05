@@ -3,6 +3,7 @@ package com.ait.com.restfull.service.impl;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -13,6 +14,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.CacheControl;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.EntityTag;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
+import javax.ws.rs.core.UriInfo;
 
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
@@ -136,6 +143,63 @@ public class IkarakalServiceImpl implements IkarakalService {
    
     }  
 	//@FormParam  @CookieParam @DefaultValue
-	
+
+
+	//获取url
+	@Override
+	@GET
+	@Path("/karakal/testGetUrlParam")
+	@Produces("application/json;charset=utf-8")
+	public BaseVo testGetUrlParam(@Context UriInfo uriInfo) {
+		BaseVo vo = new BaseVo();
+		vo.setCode("200");
+		vo.setMessage("successfull:" +uriInfo.getPath());
+		System.out.println(uriInfo.getAbsolutePath());
+		System.out.println(uriInfo.getBaseUri().getPath());
+		System.out.println(uriInfo.getRequestUri().getPath());
+		return vo;
+	}
+
+
+	@Override
+	@GET
+	@Path("/karakal/testRespone")
+	@Produces("application/json;charset=utf-8")
+	public Response testRespone() {
+		BaseVo vo = new BaseVo();
+		vo.setCode("200");
+		vo.setMessage("successfull:");
+		//* ETag ETag是用来表示数据版本的、假设唯一的某个标识。它的值是任一一个以引用括起的字符串，通常是MD5 哈希值。 
+		// EntityTag tag = new EntityTag("ss");
+		ResponseBuilder builder = Response.ok(vo, "application/json");
+		Date date = new Date();
+		//builder.expires(date);//缓存时间
+		CacheControl cc = new CacheControl();
+		cc.setMaxAge(3000);
+		cc.setNoTransform(false);
+		cc.setNoStore(false);
+		cc.setNoCache(false);
+		builder.cacheControl(cc);
+		//builder.tag(tag);
+		System.out.println("exe。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。");
+		return builder.build();
+	}
+	/**
+	 * HTTP1.1中重新设计了缓存语法。通过使用Cache-Control来对cache进行控制，其中的值以逗号分隔。它包括：
+     *  private
+     *		用于指定当且仅有Client才能缓存这个数据
+	 *	public
+	 *	指定在 请求/响应 链中的任何环节都可以缓存数据
+	 *	no-cache
+	 *	这个指令用于指示数据不应该缓存或者除非数据被重新验证过，否则不能被用于再次请求
+	 *	no-store
+	 *	通过缓存数据都被缓存了硬盘中，以使用得下次可以；这个指令表示不要将缓存存在本地。
+	 *	no-transform
+	 *	有时缓存会被自动进行转换以节省内存或者带宽，例如压缩图像。no-transform用于指定不允许进行数据转换
+	 *	max-age
+	 *	max-age用于指示缓存的有效期；如果max-age和Expires同时指定，则max-age有效
+	 *	s-maxage
+		用于指定缓存在一个共享的，中间节点的最大生命期。
+	 */
 	
 }

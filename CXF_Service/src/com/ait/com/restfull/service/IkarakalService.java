@@ -4,6 +4,9 @@ import javax.ws.rs.HeaderParam;
 import javax.ws.rs.MatrixParam;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
@@ -20,4 +23,8 @@ public interface IkarakalService {
 	public BaseVo testheaderParm(@PathParam("id") String id,@HeaderParam("Referer") String header);
 	
 	public BaseVo testFormParam(@MultipartForm UserForm from);
+	
+	public BaseVo testGetUrlParam(@Context UriInfo uriInfo);
+	
+	public Response testRespone();
 }
