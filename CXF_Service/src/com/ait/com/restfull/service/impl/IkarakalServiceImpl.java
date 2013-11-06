@@ -33,7 +33,7 @@ public class IkarakalServiceImpl implements IkarakalService {
 	@Override
 	@GET
 	@Path("/karakal/testPathParm/{id}")
-	@Produces("application/json")
+	@Produces("application/json")//返回类型
 	public BaseVo testPathParm(@PathParam("id") String id) {
 		BaseVo vo = new BaseVo();
 		vo.setCode("200");

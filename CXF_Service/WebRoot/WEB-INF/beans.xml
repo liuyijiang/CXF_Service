@@ -34,6 +34,36 @@
     
      <bean id="jsonpService" class="com.ait.com.restfull.service.impl.JSONPServiceImpl" />
     
+     <bean id="simpleService" class="com.ait.com.restfull.service.impl.SimpleServiceImpl" />
+     
+      <bean id="userService" class="com.ait.com.restfull.service.impl.UserServiceImpl" />
+    
+    <jaxrs:server id="userRs" address="/userService">
+        <jaxrs:serviceBeans>
+            <ref bean="userService" />
+        </jaxrs:serviceBeans>
+        <jaxrs:inInterceptors>
+            <bean class="org.apache.cxf.interceptor.LoggingInInterceptor"></bean>
+        </jaxrs:inInterceptors>
+        <jaxrs:outInterceptors>
+            <bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"></bean>
+        </jaxrs:outInterceptors>
+    </jaxrs:server>
+    
+    
+     <jaxrs:server id="simpleRs" address="/simpleService">
+        <jaxrs:serviceBeans>
+            <ref bean="simpleService" />
+        </jaxrs:serviceBeans>
+        <jaxrs:inInterceptors>
+            <bean class="org.apache.cxf.interceptor.LoggingInInterceptor"></bean>
+        </jaxrs:inInterceptors>
+        <jaxrs:outInterceptors>
+            <bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"></bean>
+        </jaxrs:outInterceptors>
+    </jaxrs:server>
+    
+    
     <jaxrs:server id="karakalRs" address="/karakalService">
         <jaxrs:serviceBeans>
             <ref bean="karakalService" />
